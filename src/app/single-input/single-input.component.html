@@ -1,0 +1,26 @@
+<div class="form-group">
+  <label for="email" class="label">Email:</label>
+  <input id="email" type="text" class="form-control" placeholder="Enter a valid email" [formControl]="email">
+</div>
+
+<hr>
+<h3>Input Box State</h3>
+<table class="table">
+  <tbody>
+    <tr>
+      <td colspan="2">User Input Value: {{ email.value }}</td>
+    </tr>
+    <tr>
+      <td>Valid: {{ email.valid }}</td>
+      <td>Invalid: {{ email.invalid }}</td>
+    </tr>
+    <tr>
+      <td>Touched: {{ email.touched }}</td>
+      <td>Untouched: {{ email.untouched }}</td>
+    </tr>
+    <tr>
+      <td>pristine: {{ email.pristine }}</td>
+      <td>Dirty: {{ email.dirty }}</td>
+    </tr>
+  </tbody>
+</table>
