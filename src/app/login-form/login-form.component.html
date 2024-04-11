@@ -1,11 +1,42 @@
-<form [formGroup]="loginForm" class="form" autocomplete="off">
-  <input type="text" class="form-control" placeholder="Email"
-    formControlName="email"
-  >
-  <input type="password" class="form-control" placeholder="Password"
-    formControlName="password"
-  >
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="form">
+
+  <input type="text" class="form-control" placeholder="Email" formControlName="email">
+
+  <!-- @if(loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched){ -->
+
+  <!-- @if(getEmail()!.hasError('required') && getEmail()?.touched){ -->
+
+  <!-- for error messages: you can use small or any other tag instead of div  -->
+
+  <!-- *ngIf instead of @if -->
+  <!-- <div *ngIF="email!.hasError('required') && email?.touched" class="alert alert-danger">Email Required</div> -->
+
+  @if(email!.hasError('required') && email?.touched){
+  <div class="alert alert-danger">Email Required</div>
+  }
+  @if(email!.hasError('email') && email?.touched){
+    <div class="alert alert-danger">Email must have specific format &#64; and .</div>
+  }
+
+
+  <input type="text" class="form-control mt-1" placeholder="Password" formControlName="password">
+  @if(password!.hasError('required') && password?.touched){
+  <div class="alert alert-danger">Password Required</div>
+  }
+  @if(password!.hasError('minlength') && password?.touched){
+    <div class="alert alert-danger">Password must have at least 4 letter</div>
+  }
+  @if(password!.hasError('pattern') && password?.touched){
+    <div class="alert alert-danger">Password must have only letter</div>
+  }
+  
+
+
+  <button [disabled]="loginForm.invalid" class="btn btn-primary mt-3">Login</button>
 </form>
+
+
+
 <hr>
 {{ loginForm.value | json}} <br>
 {{ loginForm.status }}

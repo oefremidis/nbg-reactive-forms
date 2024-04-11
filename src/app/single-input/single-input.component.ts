@@ -9,7 +9,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './single-input.component.html',
   styleUrl: './single-input.component.css'
 })
-export class StingleInputComponent {
+export class SingleInputComponent {
   
   // single input box
   email = new FormControl('');
